@@ -7,4 +7,8 @@ public class Enemy extends Character {
         super(name, health, typeOfCharacter);
     }
 
+    public void attack(Character character) {
+        character.reduceHealth(5);
+    }
+
 }

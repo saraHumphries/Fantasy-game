@@ -52,4 +52,10 @@ public class FighterTest {
         fighter.attackEnemy(room);
         assertEquals(1, fighter.getPurse().size());
     }
+
+    @Test
+    public void canBeAttackedByZaki() {
+        enemy.attack(fighter);
+        assertEquals(45, fighter.getHealth(), 0.01);
+    }
 }

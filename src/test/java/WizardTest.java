@@ -41,23 +41,24 @@ public class WizardTest {
         assertEquals(0, room.getEnemy().getHealth(), 0.01);
     }
 
-//    @Test
-//    public void doesNotLoseHealthIfCreatureTakesIt() {
-//        fighter.attack(room);
-//        fighter.attack(room);
-//        assertEquals(20, wizard.getHealth(), 0.01);
-//        assertEquals(18, wizard.getMythicalCreatureCurrentHealth(), 0.01);
-//    }
+    @Test
+    public void doesNotLoseHealthIfCreatureTakesIt() {
+        enemy.attack(wizard);
+        enemy.attack(wizard);
+        assertEquals(20, wizard.getHealth(), 0.01);
+        assertEquals(10, wizard.getMythicalCreatureCurrentHealth(), 0.01);
+    }
 
-//    @Test
-//    public void doesTakeDamageAfterCreatureDies() {
-//        fighter = new Fighter("Hans", 200, "Beast", WeaponType.AXE);
-//        fighter.attack(room);
-//        fighter.attack(room);
-//        fighter.attack(room);
-//        assertEquals(0, wizard.getMythicalCreatureCurrentHealth(), 0.01);
-//        assertEquals(10, wizard.getHealth(), 0.01);
-//
-//    }
+    @Test
+    public void doesTakeDamageAfterCreatureDies() {
+        fighter = new Fighter("Hans", 200, "Beast", WeaponType.AXE);
+        enemy.attack(wizard);
+        enemy.attack(wizard);
+        enemy.attack(wizard);
+        enemy.attack(wizard);
+        enemy.attack(wizard);
+        assertEquals(0, wizard.getMythicalCreatureCurrentHealth(), 0.01);
+        assertEquals(15, wizard.getHealth(), 0.01);
+    }
 
 }
