@@ -1,23 +1,17 @@
 package characters;
 
-public enum WeaponType {
-    SWORD(5),
-    AXE(10),
-    CLUB(5),
-    ARROW(1);
+public enum SpellType {
+    FIREBALL(20),
+    LIGHTNINGSTRIKE(15),
+    TORNADO(10);
 
     private final int damage;
 
-    WeaponType(int damage) {
+    SpellType(int damage) {
         this.damage = damage;
-
     }
 
     public int getDamage() {
         return this.damage;
     }
-
-
-
 }
-

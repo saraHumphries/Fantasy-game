@@ -1,6 +1,8 @@
 package characters;
 
-public class Fighter extends Character {
+import behaviours.IAttack;
+
+public class Fighter extends Character implements IAttack {
 
     private WeaponType weaponType;
 
@@ -17,5 +19,10 @@ public class Fighter extends Character {
 
     public void setWeaponType(WeaponType weaponType) {
         this.weaponType = weaponType;
+    }
+
+    @Override
+    public void attack(Character character) {
+        character.reduceHealth(this.getWeaponType().getDamage());
     }
 }
