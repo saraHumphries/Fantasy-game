@@ -4,7 +4,7 @@ import org.junit.Test;
 import rooms.Room;
 import rooms.Treasure;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class WizardTest {
 
@@ -59,6 +59,14 @@ public class WizardTest {
         enemy.attack(wizard);
         assertEquals(0, wizard.getMythicalCreatureCurrentHealth(), 0.01);
         assertEquals(15, wizard.getHealth(), 0.01);
+    }
+
+    @Test
+    public void canProduceRandomNumber() {
+        int high = 10;
+        int low = 1;
+        assertTrue(enemy.getRandomDamage() <= high);
+        assertTrue(enemy.getRandomDamage() >= low);
     }
 
 }

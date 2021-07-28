@@ -41,7 +41,7 @@ public class Room {
     }
 
     public void completeRoom() {
-        if (enemy.getHealth() == 0) {
+        if (enemy.getHealth() <= 0) {
             this.completed = true;
         }
     }
