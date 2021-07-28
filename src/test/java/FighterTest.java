@@ -1,6 +1,8 @@
 import characters.*;
 import org.junit.Before;
 import org.junit.Test;
+import rooms.Room;
+import rooms.Treasure;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,9 +10,15 @@ public class FighterTest {
 
     private Fighter fighter;
     private Cleric cleric;
+    private Room room;
+    private Enemy enemy;
+    private Treasure treasure;
 
     @Before
     public void before() {
+        treasure = new Treasure("Gold", 500);
+        enemy = new Enemy("Zaki", 10, "BootyPumper");
+        room = new Room("Blue Room", enemy, treasure);
         fighter = new Fighter("Birger", 50, "Barbarian", WeaponType.AXE);
         cleric = new Cleric("Kora", 100, "Human", HealingToolType.HERB);
     }
@@ -35,16 +43,15 @@ public class FighterTest {
     }
 
     @Test
-    public void canAttackAnotherCharacter() {
-        fighter.attack(cleric);
-        assertEquals(90, cleric.getHealth(), 0.01);
+    public void canAttackEnemyInRoom() {
+        fighter.attackEnemy(room);
+        assertEquals(0, room.getEnemy().getHealth(), 0.01);
     }
 
     @Test
-    public void canAttackEnemy() {
-        Enemy enemy = new Enemy("Zaki", 10, "BootyPumper");
-        fighter.attack(enemy);
-        assertEquals(0, enemy.getHealth(), 0.01);
+    public void checkFighterGainsGoldWhenCompletesRoom() {
+        fighter.attackEnemy(room);
+        assertEquals(1, fighter.getPurse().size());
     }
 
     

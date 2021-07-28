@@ -1,15 +1,21 @@
 package characters;
 
+import rooms.Treasure;
+
+import java.util.ArrayList;
+
 public abstract class Character {
 
     private String name;
     private Integer health;
     private String typeOfCharacter;
+    private ArrayList<Treasure> purse;
 
     public Character(String name, Integer health, String typeOfCharacter) {
         this.name = name;
         this.health = health;
         this.typeOfCharacter = typeOfCharacter;
+        this.purse = new ArrayList<>();
     }
 
     public String getName() {
@@ -44,4 +50,11 @@ public abstract class Character {
         this.health += heal;
     }
 
+    public ArrayList<Treasure> getPurse() {
+        return purse;
+    }
+
+    public void setPurse(ArrayList<Treasure> purse) {
+        this.purse = purse;
+    }
 }

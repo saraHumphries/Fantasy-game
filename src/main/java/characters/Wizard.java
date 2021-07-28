@@ -1,8 +1,10 @@
 package characters;
 
 import behaviours.IAttack;
+import behaviours.IComplete;
+import rooms.Room;
 
-public class Wizard extends Character implements IAttack {
+public class Wizard extends Character implements IAttack, IComplete {
 
     private SpellType spellType;
     private MythicalCreature mythicalCreature;
@@ -34,8 +36,17 @@ public class Wizard extends Character implements IAttack {
     }
 
     @Override
-    public void attack(Character character) {
-        character.reduceHealth(this.getSpellType().getDamage());
+    public void attackEnemy(Room room) {
+        room.getEnemy().reduceHealth(this.getSpellType().getDamage());
+        if (checkEnemyDead(room)) {
+            complete(room);
+
+        }
+    }
+
+    @Override
+    public boolean checkEnemyDead(Room room) {
+        return room.getEnemy().getHealth() <= 0;
     }
 
     @Override
@@ -48,7 +59,10 @@ public class Wizard extends Character implements IAttack {
         }
     }
 
-
+    @Override
+    public void complete(Room room) {
+        room.completeRoom();
+    }
 
     public int getMythicalCreatureCurrentHealth() {
         return mythicalCreatureCurrentHealth;
