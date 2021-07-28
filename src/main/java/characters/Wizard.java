@@ -40,7 +40,6 @@ public class Wizard extends Character implements IAttack, IComplete {
         room.getEnemy().reduceHealth(this.getSpellType().getDamage());
         if (checkEnemyDead(room)) {
             complete(room);
-
         }
     }
 

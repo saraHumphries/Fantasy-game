@@ -33,7 +33,6 @@ public class FighterTest {
     public void canIncreaseHealth() {
         fighter.increaseHealth(10);
         assertEquals(60, fighter.getHealth(), 0.01);
-
     }
 
     @Test
@@ -53,7 +52,4 @@ public class FighterTest {
         fighter.attackEnemy(room);
         assertEquals(1, fighter.getPurse().size());
     }
-
-    
-
 }
